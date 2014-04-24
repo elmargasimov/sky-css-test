@@ -1,26 +1,46 @@
 // bower:scss
 // endbower
 
-body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-    h1 {
-        font-size: 60px;
-        line-height: 1;
-        letter-spacing: -1px;
-    }
+@mixin box-shadow($hor, $ver, $blur, $color) {
+  -webkit-box-shadow: $hor $ver $blur $color;
+  -moz-box-shadow: $hor $ver $blur $color;
+  -ms-box-shadow: $hor $ver $blur $color;
+  -o-box-shadow: $hor $ver $blur $color;
+  box-shadow: $hor $ver $blur $color;
+}
+
+body {
+    background: #eef0ed;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    font-size:62.5%;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1;
+}
+
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
 }
 
 .browsehappy {
@@ -28,4 +48,188 @@ body {
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
+}
+
+* {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.nw-container {
+  font-size: 1rem;
+  padding: 2rem;
+  nav.nav-inner {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        display: inline;
+      }
+    }
+  }
+  header {
+    section.header-top {
+      width: 100%;
+      display: inline-flex;
+      -webkit-align-items: center;
+      justify-content: space-between;
+
+      .logo {
+        width: 10rem;
+        background-image: url('http://web.static.nowtv.com/ice/3.2.0/ui/images/homepage/logos/nowtv.svg');
+        background-repeat: no-repeat;
+        background-size: 10rem;
+        text-indent: -9999px;
+      }
+
+      .header-top-right {
+        .authentication {
+          li{
+            &:first-child {
+              &:after {
+                content: '/';
+                margin: 0 0.5rem;
+                display: inline;
+              }
+            }
+          }
+        }
+      }
+    }
+    section.header-bottom {
+      nav {
+        height: 5rem;
+        padding: 1.1rem;
+
+        @include border-radius(10px);
+
+        background: #6c1f53; /* Old browsers */
+        background: -moz-linear-gradient(top, #6c1f53 0%, #6c1f53 44%, #241d25 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6c1f53), color-stop(44%, #6c1f53), color-stop(100%, #241d25)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #6c1f53 0%, #6c1f53 44%, #241d25 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #6c1f53 0%, #6c1f53 44%, #241d25 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #6c1f53 0%, #6c1f53 44%, #241d25 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #6c1f53 0%, #6c1f53 44%, #241d25 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c1f53', endColorstr='#241d25', GradientType=0); /* IE6-9 */
+
+        li{
+          &:after {
+            content: '|';
+            margin: 0 1rem;
+            display: inline;
+            font-size: 2rem;
+            position: relative;
+            top: 0.2rem;
+          }
+          &:nth-last-child(2) {
+            &:after {
+              content: '';
+              margin-right: 2rem;
+            }
+          }
+          &:last-child {
+            &:after {
+              content: '';
+            }
+          }
+        }
+
+        a {
+          color: #c5adbb;
+          font-size: 1rem;
+        }
+
+        input {
+          width: 15rem;
+          outline: none;
+          border-radius: 0.5rem;
+          padding: 0.5rem;
+          border: none;
+          font-size: 1rem;
+          @include box-shadow(0px, 0px, 4px, #000);
+        }
+      }
+    }
+  }
+
+  main {
+    .search-results {
+      h2 {
+        margin: 2rem 0 1rem;
+      }
+    }
+    section.movies-filter {
+      display: inline-flex;
+      -webkit-align-items: baseline;
+      margin: 2rem 0;
+      .filter-results {
+        margin-right: 2rem;
+      }
+    }
+
+    section.movies-results {
+      img {
+        width: 13rem;
+        @include border-radius(0.5rem);
+        @include box-shadow(0px, 0px, 10px, #000);
+      }
+      ul {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        li {
+          float: left;
+          margin-right: 2rem;
+          margin-bottom: 2rem;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      .rating > span {
+        &:hover:before {
+          content: "\2605";
+          position: absolute;
+        }
+      }
+    }
+
+    .other-searches {
+      h3 {
+        margin-bottom: 1rem;
+      }
+      ul.searches {
+        list-style: none;
+        margin: 2rem 0;
+        padding: 0;
+        li {
+          display: inline;
+          margin-right: 1rem;
+          a {
+            color: #a6225c;
+          }
+        }
+      }
+      .recent-searches {
+        display: inline-flex;
+        -webkit-align-items: center;
+        h3 {
+          margin-right: 2rem;
+        }
+        button {
+          background: #fff;
+          border: 1px solid #dfb9c8;
+          @include border-radius(0.5rem);
+          padding: 0.5rem;
+          color: #a6225c;
+          outline: none;
+          &:hover {
+            background: lighten(#dfb9c8, 10%);
+          }
+        }
+      }
+    }
+  }
 }
