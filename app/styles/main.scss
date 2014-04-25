@@ -280,6 +280,9 @@ ul {
     }
 
     section.movies-results {
+      a {
+        color: #636060;
+      }
       img {
         width: 12rem;
         @include border-radius(0.5rem);
